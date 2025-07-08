@@ -1,26 +1,26 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
+// Optional: CORS support
+import cors from 'cors';
 app.use(cors());
 
-// Sample API route
+// Middleware
+app.use(express.json());
+
+// Routes
 app.get('/', (req, res) => {
-  res.send('Hello from Node API Server!');
+  res.send('Hello from ES Module Node API Server!');
 });
 
-// Example POST route
 app.post('/api/data', (req, res) => {
   const data = req.body;
   console.log('Received:', data);
   res.json({ message: 'Data received', data });
 });
 
-// Start the server
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
